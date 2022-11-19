@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="jquery.svg">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="jquery-3.6.1.min.js"></script>
+    <title>jQuery házi feladat</title>
+    <style>
+        body {
+            background-color: #330000;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        main {
+            width: 90%;
+            margin: 10px auto;
+            border: 1px solid peru;
+            box-shadow: 8px 8px 8px lightcyan;
+            border-radius: 10px;
+            padding: 8px;
+            background-color: beige;
+            text-align: center;
+        }
+
+        .box {
+            padding-left: 5%;
+            padding-bottom: 20px;
+            width: 90%;
+            border-bottom: 2px solid peru;
+            margin: 12px auto;
+        }
+
+        .lenyilo-ct {
+            width: 500px;
+            position: relative;
+        }
+
+        .lenyilo-ct .lenyit {
+            text-align: center;
+            width: 100%;
+            border: 1px solid rgb(93, 93, 93);
+            position: relative;
+            background-color: cornflowerblue;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .lenyilo-ct .lenyilo {
+            width: 100%;
+            border: 1px solid rgb(93, 93, 93);
+            background-color: rgb(131, 166, 231);
+            padding: 10px;
+            display: none;
+        }
+
+        .lenyilo-ct .lenyit[nyitva="true"]+.lenyilo {
+            display: block;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .col {
+            padding: 5px;
+            border: 1px solid rgb(176, 176, 176);
+            width: 100%;
+        }
+
+        button,
+        select {
+            color: navy;
+            border: 1px solid brown;
+            border-radius: 6px;
+            padding: 6px;
+            margin: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cikk {
+            width: 80%;
+            border: 1px solid teal;
+            border-radius: 8px;
+            background-color: white;
+            padding: 8px;
+            text-align: left;
+            margin: 8px auto;
+            cursor: grab;
+        }
+
+        .tab {
+            background-color: aqua;
+            border: 1px solid peru;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .tab:hover {
+            background-color: white;
+            color: brown;
+        }
+
+        .tab-active {
+            background-color: lime;
+        }
+
+        .tabulatorok {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tabulatorok a {
+            text-decoration: none;
+            color: maroon;
+        }
+
+        .active {
+            display: block
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .tartalom img {
+            height: 200px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>jQuery és AJAX</h1>
+    <main>
+        <div class="box">
+            <p>Legyen kezdő a 4. feladat, mert ez a fontos</p>
+            <h3>4. feladat</h3>
+            <button id="betolt">ADATOK A.J.A.X. BETÖLTÉSE</button>
+            <div id="content"></div>
+            <div id="postok"></div>
+        </div>
+
+        <div class="box">
+            <h3>1. feladat</h3>
+            <h4>A gombra kattintva megjelenik a text mező ékezet nélküli szövege</h4>
+            <textarea rows="4" cols="50" id="sztring">Ékezetes szöveg</textarea><br><br>
+            <button id="gomb">ÁTALAKÍTÁS</button>
+
+            <h4 class="rejtve" id="p1"></h4>
+        </div>
+
+        <div class="box">
+            <h3>2. feladat</h3>
+            <div class="lenyilo-ct">
+                <div class="lenyit">Lenyit</div>
+                <div class="lenyilo">Lórum ipse számos máshol nehezen vétszen szellért és gulós sikát is körledik. Négy
+                    menosszal később mizmusban kozásban és zsöllyével is kerentető baktúdás. Fityó tamik kerentető
+                    mítése
+                    így
+                    gyakodta szerkezését: „pintésének tozása, csegedrői cseményének torgája, fogomba, bilan prine a
+                    nyező, a
+                    magától fázatás molyvagát céltatotta...</div>
+            </div>
+            <div class="lenyilo-ct">
+                <div class="lenyit">Lenyit</div>
+                <div class="lenyilo">Az adratot garingya a sarjas govár felett didra árist (pl. teglen gonyság, barágos
+                    télkedő)
+                    nem fenyíthet meg. A govár filebe - az állott ciona peruját követően - válékban nakodik zsarmámucra.
+                    (3)
+                    a
+                    tubesta filebe ötven manáli, tetőjét a puffanc gatúra (2) izzadásában sarjas govár örgéjével kell
+                    vedálnia.
+                    Alma gatúra a slás gatúra (3) izzadás sítő tubesta lenéje a 10032000-01905616 szóbeli lacska tozat
+                    rojtik
+                    barágos váláb. Szonyak gatúra</div>
+            </div>
+            <div class="lenyilo-ct">
+                <div class="lenyit" nyitva="true">Osszecsuk</div>
+                <div class="lenyilo">Szonyak gatúra (1) a rojtikok panakocsának, sulásának kodomát a suvarok
+                    panakocsának
+                    hűsítő
+                    pulantásairól baran folya (kultság) szaka osta (a gadákban: kuli), a kalmozás dicső kodomáról baran,
+                    többször küzdő flat (csuszom) szaka osta (a gadákban: fejő)</div>
+            </div>
+            <div class="lenyilo-ct">
+                <div class="lenyit">Lenyit</div>
+                <div class="lenyilo">Az Első raci urgás izzanzáp gastyájaként tumos útján tongámzalban rozta tejlejét. A
+                    kodást
+                    a rató szentésre és stásra kérem téznie: A saló lácska fogája herkén vagy érletlével nyarhatik.
+                </div>
+            </div>
+            <div class="lenyilo-ct">
+                <div class="lenyit">Lenyit</div>
+                <div class="lenyilo">A vályában csúfos, a tolival és az irtés keztecsére bőrös bélyegtenyő járttal a
+                    flózika
+                    hibrigy szerhegedőben pukkol. Ugyancsak jövődi azt a hurcsót, hogy a maságnak a parciókat az itások
+                    fendezlésével kell tűzdegnie, mert ez békteli a bírátlás tránkját is. A fesküdő és csajló áhság
+                    jövődi
+                    azt a
+                    jártot is, hogy - raklan hengességen</div>
+            </div>
+        </div>
+        <div class="box">
+            <h3>3. feladat</h3>
+            <p>Egy tab rendszer jQueryben.</p>
+            <h4>Ezideig a Prooktatás tanította nekünk:</h4>
+
+            <h2 class="tabulatorok">
+                <a href="#tab1" class="tab tab-active">HTML</a>
+                <a href="#tab2" class="tab">JavaScript</a>
+                <a href="#tab3" class="tab">PHP</a>
+                <a href="#tab4" class="tab">SQL</a>
+                <a href="#tab5" class="tab">WordPress</a>
+                <a href="#tab6" class="tab">jQuery</a>
+            </h2>
+            <hr>
+
+            <section id="tab1" class="tartalom active">
+                <P>HTML5 és CSS3</P>
+                <img src="html5.svg" alt="HTML5">
+                <img src="css3.svg" alt="HTML5">
+            </section>
+            <section id="tab2" class="tartalom hidden">
+                <p>JavaScript</p>
+                <img src="js.svg" alt="JavaScript">
+            </section>
+            <section id="tab3" class="tartalom hidden">
+                <p>PHP</p>
+                <img src="php.svg" alt="PHP">
+            </section>
+            <section id="tab4" class="tartalom hidden">
+                <p>SQL</p>
+                <img src="sql.png" alt="SQL">
+            </section>
+            <section id="tab5" class="tartalom hidden">
+                <p>WordPress</p>
+                <img src="wordpress.png" alt="WordPress">
+            </section>
+            <section id="tab6" class="tartalom hidden">
+                <p>jQuery</p>
+                <img src="jquery.svg" alt="jQuery">
+            </section>
+        </div>
+    </main>
+
+    <script src="lenyilo.js"></script>
+
+</body>
+
+</html>
